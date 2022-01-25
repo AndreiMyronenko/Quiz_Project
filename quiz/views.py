@@ -155,7 +155,7 @@ def upload_csv(request):
             messages.warning(request, "The wrong file type was uploaded to the 'edited template' field.")
             return HttpResponseRedirect(request.path_info)
         
-        df = pd.read_csv(csv_file)
+        df = pd.read_csv(csv_file, encoding='utf-8', encoding_errors='replace')
         
         if not image.name.endswith(('.jpg', '.png', '.gif')):
             messages.warning(request, "The wrong file type was uploaded to the 'image' field.")
