@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6z4#xcq!e4k7=^2b*vm))_#w0j5fs*o!4ltl5cz&afvcy1=@0h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['pop-quizzy.herokuapp.com','localhost', '127.0.0.1']
 
