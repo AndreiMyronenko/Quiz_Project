@@ -1,0 +1,74 @@
+{% load static %}
+
+{% block scripts %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:600,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock scripts %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% load widget_tweaks %}
+
+<body id="body">
+	{% for message in messages %}
+          <div class="container-fluid p-0" id="alert">
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="closeAlert()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+              {{ message }}
+            </div>
+          </div>
+          {% endfor %}
+	<div id="login-card" class="card">
+		<div class="card-body">
+  			<h2 class="text-center">Login form</h2>
+  			<br>
+  			<form method="POST">
+				{% csrf_token %}
+    				<div class="form-group">
+	  				{% render_field form.username class+="form-control" id+="email" placeholder+="Enter username" name+="email" %}
+    			</div>
+    			<div class="form-group">
+					{% render_field form.password class+="form-control" id+="email" placeholder+="Enter password" name+="pswd" %}
+    			</div>
+				<div class="form-check">
+					<label class="form-check-label">
+					<input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+						Keep me Signed In
+					</label>
+				</div> 
+				<br>
+				<div class="form-group">
+					<a href="/reset_password">Forgot password?</a>
+				</div>
+    			<button type="submit" id="button" class="btn btn-primary deep-purple btn-block ">Sign In</button>
+				</form>
+				<div style="width: 100%; height: 15px; border-bottom: 1px solid lightgray; text-align: center">
+					<span class="text-muted" style="margin-top:-15% !important; font-size: 11px; background-color: white; padding: 0px 10px;">
+					  OR
+					</span>
+				  </div>
+				<br>
+				<div class="text-center">
+					<a href="{% provider_login_url 'google' %}" class="text-dark"><img src="{% static "images/btn_google_signin_dark_pressed_web.png" %}" style="width:14rem; height:auto"></a>
+				</div>
+				<br>
+				<p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+    			<div id="btn" class="text-center">
+   					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
+   					<button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
+   					<button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
+   				</div>
+		</div>
+	<div>
+		{% endblock content %}
+
+		{% block js %}
+		<script src={% static 'js/custom.js' %}></script>
+		{% endblock js %}
+</body>

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block scripts %}
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static 'css/index-style.css' %}>
+    <!-- slick slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href={% static 'css/slick-theme.min.css.map' %}>
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- nice select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+    <!-- responsive style -->
+    <link rel="stylesheet" href={% static 'css/responsive.css' %}>
+{% endblock scripts %}
+
+{% block content %}
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="col-md-11 col-lg-10 mx-auto">
+        <div class="heading_container heading_center">
+          <h2>
+            About Us - The Project
+          </h2>
+        </div>
+        <div class="box">
+          <div class="col-md-7 mx-auto">
+            <div class="img-box">
+              <img src={% static 'images/aboutus.jpeg' %} class="box-img" alt="">
+            </div>
+          </div>
+          <div class="detail-box">
+            <p>
+              Friends? Colleagues? The next big thing? this experience is brought to you by Da Boyz Interactive (DBI), to test your knowledge, friendships and work-culture. Prove you're better than everyone else at pointless trivia, by proving it isn't so pointless!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <div class="footer_container">
+    <!-- info section -->
+    <section class="info_section ">
+      <div class="container">
+        <div class="contact_box">
+          <!-- <a href="">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </a>-->
+        </div>
+        <div class="info_links">
+          <ul>
+            <li class="active">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/about">
+                About us - The Project
+              </a>
+            </li>
+            <li>
+              <a class="" href="/blog">
+                Latest News
+              </a>
+            </li>
+            <li>
+              <a class="" href="/team">
+                Team Members
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="social_box">
+          <a>
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a>
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- end info_section -->
+
+
+    <!-- footer section -->
+    <footer class="footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> Digital Tools, Prof. Philip Vialy, 2022 Viadrina, Frankfurt (Oder)</a>
+        </p>
+      </div>
+    </footer>
+    <!-- footer section -->
+  </div>
+
+</body>
+{% endblock content %}

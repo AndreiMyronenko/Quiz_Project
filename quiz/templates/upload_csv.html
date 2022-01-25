@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block scripts %}
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static 'css/index-style.css' %}>
+    <!-- slick slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href={% static 'css/slick-theme.min.css.map' %}>
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- nice select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+    <!-- responsive style -->
+    <link rel="stylesheet" href={% static 'css/responsive.css' %}>
+
+{% endblock scripts %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+<body style="background-image: none;
+            background-color: #5d8fc9;">
+        {% for message in messages %}
+    <div class="container-fluid p-0" id="alert" style="margin-top:4rem">
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close" onclick="closeAlert()">
+            </button>
+            {{ message }}
+        </div>
+    </div>
+        {% endfor %}
+    <div class="card bg-light mb-4" style="width: 30rem; margin-top:5rem; margin-left:28rem">
+        <div class="card-body">
+        <!-- Django Model Form -->
+            <h2 class="text-center card-header"><b>Add your file</b></h2>
+            <br>
+            <h4 class="text-center">Instructions</h4>
+            <ul class="list-group">
+                <li class="list-group-item">1. Download the template: <a class="text-center" href="{% static 'csv/initial_data.csv' %}"><i class="fa fa-download"></i> download</a></li>
+                <li class="list-group-item">2. Add your questions to the column 'Questions'.</li>
+                <li class="list-group-item">3. Add your answer options to the columns 'Answer_1', 'Answer_2', (if needed 'Answer_4'), and the correct answer to the column 'Answer_correct'.</li>
+                <li class="list-group-item">4. Add the title of you quiz to the first row of column 'Quiz_itle'</li>
+                <li class="list-group-item">5. Add quiz topic, description, duration of the quiz in minutes, and number of questions to the first rows of the respective columns.</li>
+                <li class="list-group-item">6. Save and close the template.</li>
+                <li class="list-group-item">7. Upload the edited template and an image that describes your quiz to the fields below.</li>
+            </ul>
+            <center><small class="text-muted">Note, you can only add one quiz at a time.</small></center>
+            <br>
+            <form method="POST" enctype="multipart/form-data" class="text-center">
+                {% csrf_token %}
+                <div class="form-group text-center">
+                    <label for="csv" class="form-label">Upload the edited template</label>
+                    {% render_field form.csv_upload class+="form-control" id="csv" name+="csv" accept+=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" %}
+                </div>
+                <br>
+                <div class="form-group text-center">
+                    <label for="image" class="form-label">Upload your quiz image</label>
+                    {% render_field form.image class+="form-control" id+="image" accept+="image/png, image/gif, image/jpeg" %}
+              </div>
+                <center><button class="btn btn-primary my-4" type="submit">Submit</button></center>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

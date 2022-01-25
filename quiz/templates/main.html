@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static 'css/index-style.css' %}>
+    <!-- slick slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href={% static 'css/slick-theme.min.css.map' %}>
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- nice select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+    <!-- responsive style -->
+    <link rel="stylesheet" href={% static 'css/responsive.css' %}>
+{% endblock scripts %}
+
+{% block content %}
+<body style="background-image: url(../static/images/hero-bg1.jpg);
+             background-size: cover;
+             background-position: center bottom;
+             background-repeat: no-repeat;">
+  <!-- Modal -->
+    <div class="modal fade" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Start?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            {% if user.is_authenticated %} 
+            <div class="modal-body" id="modal-body-confirm"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+              <button id ="start-button" type="button" class="btn btn-success">Yes</button>
+            </div>
+            {% else %}
+            <div class="modal-body">
+              <h3 class="text-center"><a href="/login">Login</a> first to start the quiz.</h3>
+            </div>
+            {% endif %} 
+          </div>
+        </div>
+    </div>
+
+  <div class="container">
+    <br>
+    <h1 class="text-center" style="margin-top:4rem; margin-bottom:1rem;color:white"><b>Quiz List</b></h1>
+    <div class="container mx-auto mt-2">
+      <div class="row row-cols-3">
+          {% for quiz in obj %}
+          <div class="col mb-4">
+              <div class="card text-center bg-light mb-3" style="height:100%;">
+                <img src="{{quiz.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body" style="margin:1rem">
+                  <h5 class="card-title"><b>{{quiz.title}}</b></h5>
+                  <p class="card-text">{{quiz.description}}</p>
+                  <p class="card-text"><small class="text-muted">{{quiz.topic}}</small></p>
+                  <p class="card-text"><small class="text-muted">Author: {{quiz.author}}</small></p>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-outline-warning modal-button"
+                              data-pk="{{quiz.pk}}"
+                              data-quiz="{{quiz.title}}"
+                              data-questions="{{quiz.number_of_questions}}"
+                              data-time="{{quiz.time}}"
+                              data-bs-toggle="modal" 
+                              data-bs-target="#quizStartModal"
+                              style="justify-content: center;"><i class="fa fa-magic"></i>
+                      Start Quiz
+                      </button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock content %}
+
+{% block js %}
+    <script src={% static 'js/main.js' %} ></script>
+{% endblock js %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href={% static 'css/index-style.css' %}>
+    <!-- slick slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href={% static 'css/slick-theme.min.css.map' %}>
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- nice select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+    <!-- responsive style -->
+    <link rel="stylesheet" href={% static 'css/responsive.css' %}>
+{% endblock scripts %}
+
+{% block content %}
+<body style="background-image: url(../static/images/white.jpg);
+             background-size: cover;
+             background-position: center bottom;
+             background-repeat: no-repeat;">
+
+    <div class="container" style="margin-top:4rem">
+        <div class="row">
+            <div class="col">
+                <h2 class='text-warning mt-2'><b>{{obj.title}}</b></h2>
+            </div>
+            <div class="h2 col text-right mt-2 text-danger" id="timer-box"></div>
+        </div>
+
+        <form id="quiz-form" class="mt-3 mb-3">
+            {% csrf_token %}
+            <div id="quiz-box"></div>
+            <span>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <a href="{% url 'quiz:main-view' %}" class="btn btn-danger mt-3" id="end_quiz" style="margin-left:10rem">Go back</a>
+            </span>
+        </form>
+        <div id="score-box" class='h1 mt-3 text-black'></div>
+        <div id="result-box"></div>
+        <a href="{% url 'quiz:index' %}" class="btn btn-primary mt-3 d-none" id="return" style="margin-bottom:2rem">Return to the main page</a>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    <script src={% static 'js/quiz.js' %}></script>
+{% endblock js %}
+</body>
