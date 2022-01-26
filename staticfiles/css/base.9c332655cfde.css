@@ -1,0 +1,123 @@
+@font-face {
+    font-family: "sans-serif";
+    src: url("../fonts/bodoni-svtytwo-sc-itc-tt-book.0d5d31dfff35.ttf");
+}
+
+.User_option {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.User_option a {
+    color: #ffffff;
+    margin-left: 75px;
+}
+
+.User_option .form-inline {
+    position: relative;
+    margin-left: 25px;
+}
+
+.User_option .form-inline input {
+    display: none;
+}
+
+.User_option .form-inline button {
+    color: #ffffff;
+}
+
+#nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+
+.custom_menu-btn {
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    top: 14px;
+}
+
+.custom_menu-btn button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.custom_menu-btn button img {
+    width: 40px;
+}
+
+.menu_btn-style {
+    position: fixed;
+    right: 15px;
+    top: 29px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    overflow-x: hidden;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 60px;
+}
+
+.overlay a {
+    padding: 0px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #ffffff;
+    display: block;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.overlay-content {
+    position: relative;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.menu_width {
+    width: 100%;
+}
+
+.menu_width.overlay a {
+    opacity: 1;
+}
