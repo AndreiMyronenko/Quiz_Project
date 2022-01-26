@@ -32,11 +32,10 @@ def register(request):
             user = form.save()
             messages.success(request, f"New account created: {user.username}")
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect("quiz:index")
         else:
             messages.error(request, "Account creation failed")
-        
-        return redirect("quiz:index")
-    
+            
     form = CreateUserForm()
     return render(request, 'register.html', {'form': form})
 
