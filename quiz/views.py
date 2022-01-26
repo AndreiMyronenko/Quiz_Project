@@ -25,6 +25,7 @@ def about(request):
 def team(request):
     return render(request, 'team.html', {})
 
+
 def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
