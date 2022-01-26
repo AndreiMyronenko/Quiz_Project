@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from numpy import NaN
 from .forms import CreateUserForm, QuizForm, CsvImportForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -182,8 +183,9 @@ def upload_csv(request):
                 Answer.objects.create(text=df['Answer_1'].iloc[i], question=new_question)
                 Answer.objects.create(text=df['Answer_2'].iloc[i], question=new_question)
                 Answer.objects.create(text=df['Answer_correct'].iloc[i], question=new_question, correct=True)
-                if len(df["Answer_4"].values) > 0:
-                    Answer.objects.create(text=df['Answer_4'].iloc[i], question=new_question)
+                for i in df['Answer_4'].isna():
+                    if i == False:
+                        Answer.objects.create(text=df['Answer_4'].iloc[i], question=new_question)
             counter += 1
         messages.success(request, "Your quiz was successfully added!")    
         return redirect('quiz:index')     
