@@ -183,8 +183,8 @@ def upload_csv(request):
                 Answer.objects.create(text=df['Answer_1'].iloc[i], question=new_question)
                 Answer.objects.create(text=df['Answer_2'].iloc[i], question=new_question)
                 Answer.objects.create(text=df['Answer_correct'].iloc[i], question=new_question, correct=True)
-                for i in df['Answer_4'].isna():
-                    if i == False:
+                for j in df['Answer_4'].isna():
+                    if j == False:
                         Answer.objects.create(text=df['Answer_4'].iloc[i], question=new_question)
             counter += 1
         messages.success(request, "Your quiz was successfully added!")    
