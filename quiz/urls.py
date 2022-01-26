@@ -26,7 +26,7 @@ urlpatterns = [
     path('main', views.main_view, name='main-view'),
     path('<int:pk>/', views.quiz_view, name='quiz-view'),
     path('<int:pk>/data', views.quiz_data_view, name='quiz-data-view'),
-    path('<int:pk>/save', views.save_quiz_view, name='save-view'),
+    path('<int:pk>/save/', views.save_quiz_view, name='save-view'),
     
     # Add Quiz, Question, Answer, see Results
     path('upload_csv', views.upload_csv, name='upload-csv'), 
