@@ -111,10 +111,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           {% if user.is_authenticated %} 
-          <div class="modal-body" id="modal-body-confirm"></div>
+          <!-- div class="modal-body" id="modal-body-confirm"></div -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-            <button id ="start-button" type="button" class="btn btn-success">Yes</button>
+            <a id ="start-button" type="button" class="btn btn-success" href="/upload_csv">Yes</a>
           </div>
           {% else %}
           <div class="modal-body">
@@ -132,10 +132,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           {% if user.is_authenticated %} 
-          <div class="modal-body" id="modal-body-confirm"></div>
+          <!-- div class="modal-body" id="modal-body-confirm"></div-->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-            <button id ="start-button" type="button" class="btn btn-success">Yes</button>
+            <a id="start-button" type="button" class="btn btn-success" href="/results">Yes</a>
           </div>
           {% else %}
           <div class="modal-body">
