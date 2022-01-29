@@ -59,9 +59,3 @@ $(document).ready(function() {
         },
     });
 });
-//    $('#results').DataTable({
-//        "order": [
-//            [2, "desc"]
-//        ]
-//    })
-//});
