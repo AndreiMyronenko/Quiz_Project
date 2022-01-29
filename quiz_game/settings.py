@@ -17,6 +17,7 @@ import os
 from decouple import config
 import django_heroku
 import dj_database_url
+from boto.s3.connection import S3Connection
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -185,8 +186,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_S3_ACCESS_KEY_ID = os.getenv('AWS_ID')
-AWS_S3_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET')
+s3 = S3Connection(os.environ['AWS_ID'], os.environ['AWS_SECRET'])
+#AWS_S3_ACCESS_KEY_ID = os.getenv('AWS_ID')
+#AWS_S3_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET')
 AWS_STORAGE_BUCKET_NAME = 'pop-quizzy-proj'
 AWS_QUERYSTRING_AUTH = False 
 AWS_S3_FILE_OVERWRITE = False
