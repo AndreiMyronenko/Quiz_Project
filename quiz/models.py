@@ -10,7 +10,7 @@ class Quiz(models.Model):
     topic = models.CharField(max_length=120)
     description = models.CharField(max_length=1000)
     number_of_questions = models.IntegerField()
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to='media/', null=True, blank=True)
     time = models.IntegerField(help_text="Durations of the quiz in minutes", default=1)
     
     

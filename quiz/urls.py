@@ -32,4 +32,4 @@ urlpatterns = [
     path('upload_csv', views.upload_csv, name='upload-csv'), 
     path('results', views.results, name="results-view" ),
      
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
