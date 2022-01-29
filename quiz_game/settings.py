@@ -186,8 +186,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_S3_ACCESS_KEY_ID = os.environ['AWS_ID']
-AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_SECRET']
+AWS_S3_ACCESS_KEY_ID = os.environ['AWS_S3_ACCESS_KEY_ID']
+AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_S3_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'pop-quizzy-proj'
 AWS_QUERYSTRING_AUTH = False 
 AWS_S3_FILE_OVERWRITE = False
@@ -200,7 +200,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'thinkingmeme2022@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ['PASS']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 
 django_heroku.settings(locals())
