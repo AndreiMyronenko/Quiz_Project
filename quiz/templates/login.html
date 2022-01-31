@@ -1,17 +1,28 @@
 {% load static %}
-
-{% block scripts %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:600,700,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-{% endblock scripts %}
-
-{% block content %}
-
 {% load crispy_forms_tags %}
 {% load socialaccount %}
 {% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <title>quizzy</title>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:600,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+    </head>
 
 <body id="body">
 	{% for message in messages %}
@@ -66,9 +77,6 @@
    				</div>
 		</div>
 	<div>
-		{% endblock content %}
 
-		{% block js %}
-		<script src={% static 'js/custom.js' %}></script>
-		{% endblock js %}
+	<script src={% static 'js/custom.js' %}></script>
 </body>
