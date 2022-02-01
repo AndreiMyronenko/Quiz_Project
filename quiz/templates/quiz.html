@@ -40,7 +40,13 @@
         </form>
         <div id="score-box" class='h1 mt-3 text-black'></div>
         <div id="result-box"></div>
-        <a href="{% url 'quiz:index' %}" class="btn btn-primary mt-3 d-none" id="return" style="margin-bottom:2rem">Return to the main page</a>
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'quiz:results' %}" class="btn btn-success mt-3 d-none" id="see_res" style="margin-bottom:2rem">See where you are in the Leaderboards</a>
+            </div>
+            <div>
+                <a href="{% url 'quiz:index' %}" class="btn btn-primary mt-3 d-none" id="return" style="margin-bottom:2rem">Return to the main page</a>
+            </div>
     </div>
 {% endblock content %}
 

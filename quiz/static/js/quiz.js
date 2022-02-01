@@ -83,6 +83,8 @@ const quizForm = document.getElementById('quiz-form')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const num_of_questions = document.getElementById('num_of_questions')
 const return_btn = document.getElementById('return')
+const see_res = document.getElementById('see_res')
+
 
 
 const sendData = () => {
@@ -137,6 +139,8 @@ const sendData = () => {
                 }
             })
             return_btn.classList.remove('d-none')
+            see_res.classList.remove('d-none')
+
         },
         error: function(error) {
             console.log(error)

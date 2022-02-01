@@ -34,7 +34,7 @@ def register(request):
             user = form.save()
             messages.success(request, f"New account created: {user.username}")
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect("quiz:index")
+            return redirect("quiz:main-view")
         else:
             messages.error(request, "Account creation failed")
             
@@ -51,7 +51,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f'You are now logged in as {username}.')
-                return redirect("quiz:index")
+                return redirect("quiz:main-view")
             else:
                 messages.error(request, 'Invalid username or password.')
         else:
