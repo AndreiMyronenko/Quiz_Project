@@ -20,3 +20,9 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
         window.location.href = pk
     })
 }))
+
+window.setTimeout(function() {
+    $("#alert").fadeTo(400, 0).slideUp(400, function() {
+        $(this).remove()
+    })
+}, 2000)

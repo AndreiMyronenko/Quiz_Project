@@ -101,8 +101,10 @@ def save_quiz_view(request, pk):
         for k in data_.keys():
             question = Question.objects.get(text=k)
             questions.append(question)
-        
-        user = request.user
+        if (request.user.id != None):
+            user = request.user
+        else:
+            user = None
         quiz = Quiz.objects.get(pk=pk)
         
         score = 0
@@ -126,24 +128,10 @@ def save_quiz_view(request, pk):
             else:
                 results.append({str(q): 'not answered'})
         score_ = score * multiplier
-        Result.objects.create(quiz=quiz, user=user, score=score_)
+        if user is not None:
+            Result.objects.create(quiz=quiz, user=user, score=score_)
            
     return JsonResponse({'score': score_, 'results': results})
-
-
-def add_quiz(request):
-    if request.method == "POST":
-        quiz_form = QuizForm(request.POST, request.FILES)
-        if quiz_form.is_valid():
-            quiz_form.save()
-            messages.success(request, "Your quiz was successfully added.")
-        else:
-            messages.error(request, "Error saving form")
-            
-        return redirect('quiz:index')
-    quiz_form = QuizForm()
-    quizzes = Quiz.objects.all()
-    return render(request=request, template_name="add_quiz.html", context={'quiz_form': quiz_form, 'quizzes': quizzes})
 
 
 def upload_csv(request):

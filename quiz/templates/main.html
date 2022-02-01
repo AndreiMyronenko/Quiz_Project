@@ -39,6 +39,13 @@
 
   <div class="container">
     <br>
+        {% for message in messages %}
+          <div class="container-fluid p-0" id="alert" style="margin-top:5%">
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+                {{ message }}
+            </div>
+          </div>
+          {% endfor %}
     <h1 class="text-center" style="margin-top:4rem; margin-bottom:1rem;color:white"><b>Quiz List</b></h1>
     <div class="container mx-auto mt-2">
       <div class="row row-cols-2">
